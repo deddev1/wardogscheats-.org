@@ -11,7 +11,7 @@ import {
   type PageSeo,
 } from '../data/site'
 import { getReviewsAggregate, REVIEWS } from '../data/reviews'
-import type { GameStatus } from '../data/games'
+import { getGame, type GameStatus } from '../data/games'
 import { PAGE_MEDIA } from '../data/media'
 
 export const PRODUCT_ID = `${SITE_URL}/#product`
@@ -91,7 +91,27 @@ export function webPageNode(seo: PageSeo) {
   return page
 }
 
+function defaultGameStatus(): GameStatus {
+  return getGame('wardogs')?.status ?? 'Updating'
+}
+
+function productOffer(status: GameStatus = defaultGameStatus()) {
+  const availability =
+    status === 'Undetected' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
+  return {
+    '@type': 'Offer',
+    url: `${SITE_URL}/wardogs-hacks`,
+    availability,
+    price: PRODUCT_PRICE_USD,
+    priceCurrency: 'USD',
+    priceValidUntil: '2027-12-31',
+    itemCondition: 'https://schema.org/NewCondition',
+    seller: { '@id': `${SITE_URL}/#organization` },
+  }
+}
+
 export function productCoreJsonLd() {
+  const aggregate = getReviewsAggregate()
   return {
     '@type': 'Product',
     '@id': PRODUCT_ID,
@@ -102,15 +122,22 @@ export function productCoreJsonLd() {
     brand: { '@type': 'Brand', name: SITE_NAME },
     manufacturer: { '@id': `${SITE_URL}/#organization` },
     category: 'WARDOGS software',
+    offers: productOffer(),
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: aggregate.ratingValue,
+      reviewCount: aggregate.reviewCount,
+      bestRating: aggregate.bestRating,
+      worstRating: aggregate.worstRating,
+    },
   }
 }
 
 export function productDetailJsonLd(status: GameStatus) {
-  const availability =
-    status === 'Undetected' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
   return {
     ...productCoreJsonLd(),
     image: absoluteAsset(PAGE_MEDIA.product.image),
+    offers: productOffer(status),
     about: {
       '@type': 'VideoGame',
       name: 'WARDOGS',
@@ -123,16 +150,6 @@ export function productDetailJsonLd(status: GameStatus) {
         value: 'WARDOGS',
       },
     ],
-    offers: {
-      '@type': 'Offer',
-      url: `${SITE_URL}/wardogs-hacks`,
-      availability,
-      price: PRODUCT_PRICE_USD,
-      priceCurrency: 'USD',
-      priceValidUntil: '2027-12-31',
-      itemCondition: 'https://schema.org/NewCondition',
-      seller: { '@id': `${SITE_URL}/#organization` },
-    },
   }
 }
 

@@ -1,5 +1,5 @@
 /**
- * Single sitemap at /sitemap.xml — every indexed page URL + image sitemap entries.
+ * Four urlset sitemaps + /sitemap.xml index — every indexed page URL + image entries.
  * Every <url> must include ≥1 <image:image>. Every first-party still image must appear.
  */
 import { existsSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'node:fs'
@@ -23,6 +23,13 @@ const OG_DEFAULT = '/og/wardogs-hacks.jpg'
 
 /** All indexable still images that must appear in the sitemap at least once. */
 const ALL_SITE_IMAGES = [SOLDIER, TACTICAL, OBJECTIVE, PRODUCT_HERO, PRODUCT_COVER, OG_DEFAULT]
+
+const SITEMAP_FILES = {
+  'sitemap-pages.xml': new Set(['/', '/reviews', '/faq', '/support']),
+  'sitemap-products.xml': new Set([]), // filled with /{slug}-hacks from games
+  'sitemap-forums.xml': new Set(['/forums']), // plus /forums/{slug}
+  'sitemap-images.xml': new Set(['/privacy', '/terms', '/refunds']),
+}
 
 const FORUM_IMAGES = {
   'features-list': OBJECTIVE,
@@ -94,6 +101,34 @@ function urlEntry({ path, priority, changefreq, lastmod = TODAY, images }) {
 ${alternateLinks(url)}
 ${imageXml}
   </url>`
+}
+
+function routeFromPageLoc(loc) {
+  if (loc === siteUrl('/')) return '/'
+  return loc.slice(SITE_URL.length)
+}
+
+function prepareSitemapBuckets(games, forums) {
+  SITEMAP_FILES['sitemap-products.xml'].clear()
+  SITEMAP_FILES['sitemap-forums.xml'].clear()
+  SITEMAP_FILES['sitemap-forums.xml'].add('/forums')
+  for (const game of games) {
+    SITEMAP_FILES['sitemap-products.xml'].add(`/${game.slug}-hacks`)
+  }
+  for (const forum of forums) {
+    SITEMAP_FILES['sitemap-forums.xml'].add(`/forums/${forum.slug}`)
+  }
+}
+
+function splitUrlsetIntoFiles(urlsetXml) {
+  const buckets = Object.fromEntries(Object.keys(SITEMAP_FILES).map((name) => [name, []]))
+  for (const block of urlsetXml.match(/<url>[\s\S]*?<\/url>/g) || []) {
+    const loc = block.match(/<loc>([^<]+)<\/loc>/)?.[1]
+    if (!loc) throw new Error('Sitemap block missing <loc>')
+    const route = routeFromPageLoc(loc)
+    buckets[assignSitemapFile(route)].push(block)
+  }
+  return buckets
 }
 
 function buildSitemap(games, forums) {
@@ -245,13 +280,41 @@ function buildSitemap(games, forums) {
     }),
   ]
 
+  return wrapUrlset(entries)
+}
+
+function wrapUrlset(entryXmlList) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${entries.join('\n')}
+${entryXmlList.join('\n')}
 </urlset>
 `
+}
+
+function buildSitemapIndex(filenames) {
+  const items = filenames
+    .map(
+      (name) => `  <sitemap>
+    <loc>${escapeXml(siteUrl(`/${name}`))}</loc>
+    <lastmod>${TODAY}</lastmod>
+  </sitemap>`,
+    )
+    .join('\n')
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${items}
+</sitemapindex>
+`
+}
+
+function assignSitemapFile(path) {
+  if (SITEMAP_FILES['sitemap-pages.xml'].has(path)) return 'sitemap-pages.xml'
+  if (SITEMAP_FILES['sitemap-products.xml'].has(path)) return 'sitemap-products.xml'
+  if (SITEMAP_FILES['sitemap-forums.xml'].has(path)) return 'sitemap-forums.xml'
+  if (SITEMAP_FILES['sitemap-images.xml'].has(path)) return 'sitemap-images.xml'
+  throw new Error(`No sitemap file bucket for path: ${path}`)
 }
 
 function validate(games, forums, staticRoutes, sitemap) {
@@ -294,7 +357,9 @@ function validate(games, forums, staticRoutes, sitemap) {
   if (new Set(pageLocs).size !== pageLocs.length) {
     errors.push('sitemap.xml contains duplicate page URLs')
   }
-  if (sitemap.includes('<sitemapindex')) errors.push('sitemap.xml must be a single urlset, not an index')
+  if (sitemap.includes('<sitemapindex')) {
+    errors.push('Combined urlset validation must not include a sitemap index')
+  }
   if (urlBlocks.length !== expectedUrls.size) {
     errors.push(`Expected ${expectedUrls.size} <url> entries, found ${urlBlocks.length}`)
   }
@@ -327,10 +392,23 @@ function main() {
   const games = loadGames()
   const forums = loadForums()
   const staticRoutes = loadStaticRoutes()
-  const sitemap = buildSitemap(games, forums)
-  validate(games, forums, staticRoutes, sitemap)
+  prepareSitemapBuckets(games, forums)
+  const urlset = buildSitemap(games, forums)
+  validate(games, forums, staticRoutes, urlset)
 
-  writeFileSync(join(publicDir, 'sitemap.xml'), sitemap, 'utf8')
+  const sitemapNames = Object.keys(SITEMAP_FILES)
+  const buckets = splitUrlsetIntoFiles(urlset)
+  for (const name of sitemapNames) {
+    const blocks = buckets[name]
+    if (!blocks.length) throw new Error(`Sitemap ${name} is empty`)
+    writeFileSync(join(publicDir, name), wrapUrlset(blocks), 'utf8')
+  }
+  writeFileSync(join(publicDir, 'sitemap.xml'), buildSitemapIndex(sitemapNames), 'utf8')
+
+  const robotsSitemapLines = [
+    `Sitemap: ${siteUrl('/sitemap.xml')}`,
+    ...sitemapNames.map((name) => `Sitemap: ${siteUrl(`/${name}`)}`),
+  ]
   writeFileSync(
     join(publicDir, 'robots.txt'),
     [
@@ -349,17 +427,13 @@ function main() {
       'Allow: /sitemap.xml',
       'Allow: /robots.txt',
       '',
-      `Sitemap: ${siteUrl('/sitemap.xml')}`,
+      ...robotsSitemapLines,
       '',
     ].join('\n'),
     'utf8',
   )
 
   const stale = [
-    'sitemap-pages.xml',
-    'sitemap-products.xml',
-    'sitemap-forums.xml',
-    'sitemap-images.xml',
     'sitemap-blogs.xml',
     'sitemap-regions.xml',
     'sitemap-index.xml',
@@ -372,10 +446,10 @@ function main() {
     }
   }
 
-  const urlCount = (sitemap.match(/<url>/g) || []).length
-  const imageCount = (sitemap.match(/<image:image>/g) || []).length
+  const urlCount = (urlset.match(/<url>/g) || []).length
+  const imageCount = (urlset.match(/<image:image>/g) || []).length
   console.log(
-    `Sitemap OK: ${urlCount} URLs, ${imageCount} images in ${siteUrl('/sitemap.xml')}`,
+    `Sitemap OK: ${urlCount} URLs, ${imageCount} images — index ${siteUrl('/sitemap.xml')} + ${sitemapNames.length} child sitemaps`,
   )
 }
 

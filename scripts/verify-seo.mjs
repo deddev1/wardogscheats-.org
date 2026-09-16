@@ -90,6 +90,12 @@ const importantPages = [
 if (!home.includes('<title>Wardogs Cheats | ESP, Aimbot &amp; Radar for PC</title>')) {
   fail('Homepage does not own the exact transactional title')
 }
+if (!home.includes('"@type":"Offer"') || !home.includes('"price":"29.99"')) {
+  fail('Homepage Product schema must include an Offer with price')
+}
+if (!home.includes('"@type":"AggregateRating"')) {
+  fail('Homepage Product schema must include aggregateRating')
+}
 if (product.includes('<title>Buy Wardogs Cheats')) fail('Product details page competes with homepage')
 if ((faq.match(/"@type":"FAQPage"/g) || []).length !== 1) fail('/faq must own one FAQPage')
 for (const [name, html] of [
@@ -131,8 +137,25 @@ if (!home.includes('youtube-nocookie.com/embed/h5xrkTHh0nU')) {
   fail('Homepage is missing the WARDOGS YouTube preview')
 }
 
-const sitemap = readFileSync(join(dist, 'sitemap.xml'), 'utf8')
-if (sitemap.includes('<sitemapindex')) fail('sitemap.xml must be a single urlset, not an index')
+const CHILD_SITEMAPS = [
+  'sitemap-pages.xml',
+  'sitemap-products.xml',
+  'sitemap-forums.xml',
+  'sitemap-images.xml',
+]
+
+const sitemapIndex = readFileSync(join(dist, 'sitemap.xml'), 'utf8')
+if (!sitemapIndex.includes('<sitemapindex')) {
+  fail('sitemap.xml must be a sitemap index listing the four child sitemaps')
+}
+for (const name of CHILD_SITEMAPS) {
+  if (!existsSync(join(dist, name))) fail(`dist/${name} is missing`)
+  if (!sitemapIndex.includes(siteUrl(`/${name}`))) {
+    fail(`sitemap.xml index missing ${siteUrl(`/${name}`)}`)
+  }
+}
+const sitemap = CHILD_SITEMAPS.map((name) => readFileSync(join(dist, name), 'utf8')).join('\n')
+if (sitemap.includes('<sitemapindex')) fail('Child sitemap must be a urlset, not an index')
 if (/forums\/(instructions|how-to-load)/.test(sitemap)) fail('Retired forum remains in sitemap.xml')
 const expectedUrls = new Set(
   files
@@ -190,16 +213,7 @@ if (!sitemap.trimStart().startsWith('<?xml version="1.0" encoding="UTF-8"?>')) {
 if (sitemap.includes('xml-stylesheet')) {
   fail('sitemap.xml must not embed xml-stylesheet (Worker injects it for browsers only)')
 }
-for (const stale of [
-  'sitemap-pages.xml',
-  'sitemap-products.xml',
-  'sitemap-forums.xml',
-  'sitemap-images.xml',
-  'sitemap-blogs.xml',
-  'sitemap-regions.xml',
-  'sitemap-index.xml',
-  'sitemap_index.xml',
-]) {
+for (const stale of ['sitemap-blogs.xml', 'sitemap-regions.xml', 'sitemap-index.xml', 'sitemap_index.xml']) {
   if (existsSync(join(dist, stale))) fail(`Stale split sitemap still published: ${stale}`)
 }
 
@@ -209,7 +223,12 @@ if (!existsSync(join(dist, '_routes.json'))) fail('dist/_routes.json is missing'
 
 const robots = readFileSync(join(dist, 'robots.txt'), 'utf8')
 if (!robots.includes(`Sitemap: ${siteUrl('/sitemap.xml')}`)) {
-  fail(`robots.txt must point at the canonical HTTPS sitemap on ${SITE_HOST}`)
+  fail(`robots.txt must point at the sitemap index on ${SITE_HOST}`)
+}
+for (const name of CHILD_SITEMAPS) {
+  if (!robots.includes(`Sitemap: ${siteUrl(`/${name}`)}`)) {
+    fail(`robots.txt must list child sitemap ${siteUrl(`/${name}`)}`)
+  }
 }
 if (robots.includes('wardogshacks.net')) fail('robots.txt still references wardogshacks.net')
 if (!robots.includes('Allow: /sitemap.xml')) {
@@ -220,8 +239,10 @@ if (!robots.includes('User-agent: Googlebot')) {
 }
 
 const routes = JSON.parse(readFileSync(join(dist, '_routes.json'), 'utf8'))
-if (!routes.exclude?.includes('/sitemap.xml') || !routes.exclude?.includes('/robots.txt')) {
-  fail('_routes.json must exclude /sitemap.xml and /robots.txt from Functions')
+for (const path of ['/sitemap.xml', '/robots.txt', ...CHILD_SITEMAPS.map((n) => `/${n}`)]) {
+  if (!routes.exclude?.includes(path)) {
+    fail(`_routes.json must exclude ${path} from Functions`)
+  }
 }
 
 for (const asset of [
@@ -239,11 +260,16 @@ for (const asset of [
 }
 
 const redirects = readFileSync(join(root, 'public', '_redirects'), 'utf8')
-if (!redirects.includes('/sitemap-pages.xml')) {
+if (!redirects.includes('/sitemap-blogs.xml')) {
   fail('_redirects missing legacy sitemap → /sitemap.xml redirects')
 }
 if (!redirects.includes('/sitemap-index.xml')) {
   fail('_redirects missing sitemap-index.xml → /sitemap.xml redirect')
+}
+for (const name of CHILD_SITEMAPS) {
+  if (redirects.includes(`/${name}`) && redirects.includes(`/${name}     /sitemap.xml`)) {
+    fail(`_redirects must not redirect live child sitemap /${name}`)
+  }
 }
 
 const headers = readFileSync(join(root, 'public', '_headers'), 'utf8')

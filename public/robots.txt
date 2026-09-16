@@ -14,3 +14,7 @@ Allow: /sitemap.xml
 Allow: /robots.txt
 
 Sitemap: https://wardogscheats.org/sitemap.xml
+Sitemap: https://wardogscheats.org/sitemap-pages.xml
+Sitemap: https://wardogscheats.org/sitemap-products.xml
+Sitemap: https://wardogscheats.org/sitemap-forums.xml
+Sitemap: https://wardogscheats.org/sitemap-images.xml

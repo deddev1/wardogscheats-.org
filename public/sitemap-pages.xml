@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
+    <loc>https://wardogscheats.org/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wardogscheats.org/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wardogscheats.org/" />
+    <image:image>
+      <image:loc>https://wardogscheats.org/media/wardogs-soldier-hero.jpg</image:loc>
+      <image:title>Wardogs Cheats Hero</image:title>
+      <image:caption>Tactical soldier hero for Wardogs Cheats on PC.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wardogscheats.org/media/wardogs-tactical-fps.jpg</image:loc>
+      <image:title>Wardogs Cheats Tactical Artwork</image:title>
+      <image:caption>Homepage artwork for WARDOGS ESP, radar and soft aim.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wardogscheats.org/og/wardogs-hacks.jpg</image:loc>
+      <image:title>Wardogs Cheats Social Preview</image:title>
+      <image:caption>Default Open Graph image for Wardogs Cheats.</image:caption>
+    </image:image>
+  </url>
+<url>
+    <loc>https://wardogscheats.org/reviews</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wardogscheats.org/reviews" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wardogscheats.org/reviews" />
+    <image:image>
+      <image:loc>https://wardogscheats.org/media/wardogs-tactical-fps.jpg</image:loc>
+      <image:title>Wardogs Cheats Review Artwork</image:title>
+      <image:caption>Artwork accompanying verified buyer reviews.</image:caption>
+    </image:image>
+  </url>
+<url>
+    <loc>https://wardogscheats.org/faq</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wardogscheats.org/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wardogscheats.org/faq" />
+    <image:image>
+      <image:loc>https://wardogscheats.org/media/wardogs-control-zone.jpg</image:loc>
+      <image:title>Wardogs Cheats FAQ Artwork</image:title>
+      <image:caption>Product artwork accompanying pre-purchase answers.</image:caption>
+    </image:image>
+  </url>
+<url>
+    <loc>https://wardogscheats.org/support</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wardogscheats.org/support" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wardogscheats.org/support" />
+    <image:image>
+      <image:loc>https://wardogscheats.org/media/wardogs-tactical-fps.jpg</image:loc>
+      <image:title>Wardogs Cheats Support Artwork</image:title>
+      <image:caption>Artwork accompanying load and delivery support.</image:caption>
+    </image:image>
+  </url>
+</urlset>

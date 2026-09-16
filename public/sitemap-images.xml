@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
+    <loc>https://wardogscheats.org/privacy</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wardogscheats.org/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wardogscheats.org/privacy" />
+    <image:image>
+      <image:loc>https://wardogscheats.org/og/wardogs-hacks.jpg</image:loc>
+      <image:title>Wardogs Cheats Privacy Policy</image:title>
+      <image:caption>Privacy policy for wardogscheats.org orders and support.</image:caption>
+    </image:image>
+  </url>
+<url>
+    <loc>https://wardogscheats.org/terms</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wardogscheats.org/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wardogscheats.org/terms" />
+    <image:image>
+      <image:loc>https://wardogscheats.org/og/wardogs-hacks.jpg</image:loc>
+      <image:title>Wardogs Cheats Terms of Use</image:title>
+      <image:caption>License terms and risk disclaimer for Wardogs Cheats.</image:caption>
+    </image:image>
+  </url>
+<url>
+    <loc>https://wardogscheats.org/refunds</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.45</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wardogscheats.org/refunds" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wardogscheats.org/refunds" />
+    <image:image>
+      <image:loc>https://wardogscheats.org/og/wardogs-hacks.jpg</image:loc>
+      <image:title>Wardogs Cheats Refund Policy</image:title>
+      <image:caption>Refund rules for digital Wardogs Cheats licenses.</image:caption>
+    </image:image>
+  </url>
+</urlset>
