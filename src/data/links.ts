@@ -79,7 +79,7 @@ export const SITE_GUIDE_LINKS = [
  */
 const CHECKOUT_HOST = ['za', 'deyo', '.com'].join('')
 const CHECKOUT_REF = ['Q', 'R', 'H'].join('')
-const CHECKOUT_PRODUCT = '/products/wardogs-hacks'
+const CHECKOUT_PRODUCT = '/products/wardogs'
 
 export const CHECKOUT_URL = `https://${CHECKOUT_HOST}/go/${CHECKOUT_REF}?to=${encodeURIComponent(CHECKOUT_PRODUCT)}`
 
