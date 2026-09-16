@@ -2,9 +2,10 @@ import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import tailwind from '@astrojs/tailwind'
 import { sitemapBrowserViewPlugin } from './scripts/sitemap-browser-view.mjs'
+import { SITE_URL } from './scripts/site-url.mjs'
 
 export default defineConfig({
-  site: 'https://wardogshacks.net',
+  site: SITE_URL,
   output: 'static',
   trailingSlash: 'never',
   compressHTML: true,

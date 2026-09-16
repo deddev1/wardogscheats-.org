@@ -18,12 +18,12 @@ export const POLICY_PAGES: PolicyPageContent[] = [
   {
     slug: 'privacy',
     path: '/privacy',
-    title: 'Privacy Policy | WARDOGS Hacks',
+    title: 'Privacy Policy | Wardogs Cheats',
     description:
-      'How wardogshacks.net handles order details, delivery email, support messages and basic site analytics for WARDOGS Hacks.',
+      'How wardogscheats.org handles order details, delivery email, support messages and basic site analytics for Wardogs Cheats.',
     h1: 'Privacy Policy',
     intro:
-      'This page explains what we collect when you browse wardogshacks.net, buy a WARDOGS Hacks license, or contact support — and what we do not collect.',
+      'This page explains what we collect when you browse wardogscheats.org, buy a Wardogs Cheats license, or contact support — and what we do not collect.',
     sections: [
       {
         heading: 'What we collect',
@@ -46,7 +46,7 @@ export const POLICY_PAGES: PolicyPageContent[] = [
         body: [
           'Essential cookies may be set by checkout or CDN providers so payment and delivery work.',
           'Embedded media (for example YouTube on the homepage) is governed by that provider’s privacy terms when you play it.',
-          'Official WARDOGS / Steam / Team17 links are external. Their privacy policies apply once you leave wardogshacks.net.',
+          'Official WARDOGS / Steam / Team17 links are external. Their privacy policies apply once you leave wardogscheats.org.',
         ],
       },
       {
@@ -66,17 +66,17 @@ export const POLICY_PAGES: PolicyPageContent[] = [
   {
     slug: 'terms',
     path: '/terms',
-    title: 'Terms of Use | WARDOGS Hacks',
+    title: 'Terms of Use | Wardogs Cheats',
     description:
-      'License rules, age limits, anti-cheat risk, and liability limits for WARDOGS Hacks on wardogshacks.net.',
+      'License rules, age limits, anti-cheat risk, and liability limits for Wardogs Cheats on wardogscheats.org.',
     h1: 'Terms of Use',
     intro:
-      'Buying or running WARDOGS Hacks means you accept these terms. A license covers personal use of ESP, radar, and soft-aim tools for WARDOGS on Windows PC — nothing beyond that.',
+      'Buying or running Wardogs Cheats means you accept these terms. A license covers personal use of ESP, radar, and soft-aim tools for WARDOGS on Windows PC — nothing beyond that.',
     sections: [
       {
         heading: 'Acceptance and what a license covers',
         body: [
-          'A key unlocks the current WARDOGS Hacks build for the duration you purchased (day, week, or month plans where offered).',
+          'A key unlocks the current Wardogs Cheats build for the duration you purchased (day, week, or month plans where offered).',
           'Handing the package to someone else, reselling it, sharing accounts, or reverse-engineering the loader breaks these terms and can end your access without a refund.',
         ],
       },
@@ -113,12 +113,12 @@ export const POLICY_PAGES: PolicyPageContent[] = [
   {
     slug: 'refunds',
     path: '/refunds',
-    title: 'Refund Policy | WARDOGS Hacks',
+    title: 'Refund Policy | Wardogs Cheats',
     description:
-      'When WARDOGS Hacks refunds apply for digital licenses, delivery failures, and Updating status windows on wardogshacks.net.',
+      'When Wardogs Cheats refunds apply for digital licenses, delivery failures, and Updating status windows on wardogscheats.org.',
     h1: 'Refund Policy',
     intro:
-      'WARDOGS Hacks licenses are digital goods. This page covers when we can refund, when we cannot, and how to open a request with your order ID.',
+      'Wardogs Cheats licenses are digital goods. This page covers when we can refund, when we cannot, and how to open a request with your order ID.',
     sections: [
       {
         heading: 'When refunds are available',

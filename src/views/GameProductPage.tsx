@@ -20,14 +20,14 @@ import { WARDOGS_HOME_VIDEO } from '../data/media'
 function ProductPurchaseCard({ game }: { game: Game }) {
   return (
     <div className="page-card overflow-hidden rounded-2xl sm:rounded-3xl">
-      <CheckoutLink className="block" aria-label="Buy WARDOGS Hacks">
+      <CheckoutLink className="block" aria-label="Buy Wardogs Cheats">
         <GameCover slug={game.slug} name={game.name} aspect="square" className="rounded-none" />
       </CheckoutLink>
       <div className="p-5 sm:p-8">
         <div className="flex items-center gap-3">
           <div className="icon-well shrink-0 text-sm font-bold">WD</div>
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-white">WARDOGS Hacks</p>
+            <p className="truncate text-sm font-semibold text-white">Wardogs Cheats</p>
             <p className="text-xs text-white/45">
               Status: {game.status} · WARDOGS · From ${PRODUCT_PRICE_USD}
             </p>
@@ -35,7 +35,7 @@ function ProductPurchaseCard({ game }: { game: Game }) {
         </div>
 
         <CheckoutLink className="cta-gradient mt-5 block w-full rounded-full py-3.5 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90 sm:mt-6">
-          Buy WARDOGS Hacks
+          Buy Wardogs Cheats
         </CheckoutLink>
         <p className="mt-3 text-center text-[11px] text-white/40">
           Instant delivery · Check Undetected first
@@ -107,14 +107,14 @@ export function GameProductPage({ guideSlug }: GameProductPageProps) {
               </span>
 
               <h1 className="mt-3 text-2xl font-semibold leading-tight tracking-tight text-white sm:mt-4 sm:text-4xl lg:text-5xl">
-                WARDOGS Hack Features, Price & Checkout
+                Wardogs Cheats Features, Price & Checkout
               </h1>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/55 sm:mt-4 sm:text-base">
                 Compare player ESP, vehicle ESP, soft aim, 2D radar and stream-proof options.
                 Confirm current status, then continue to checkout.
               </p>
               <CheckoutLink className="cta-gradient mt-5 inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90">
-                Buy WARDOGS Hacks
+                Buy Wardogs Cheats
               </CheckoutLink>
             </div>
 
@@ -150,7 +150,7 @@ export function GameProductPage({ guideSlug }: GameProductPageProps) {
                     Player ESP, vehicle ESP & radar
                   </h2>
                   <p>
-                    WARDOGS Hacks lead with player ESP through terrain and buildings, vehicle
+                    Wardogs Cheats lead with player ESP through terrain and buildings, vehicle
                     tags for combined-arms fights, and a 2D radar so you see rotations before
                     they third-party your Control Zone hold.
                   </p>
@@ -255,7 +255,7 @@ export function GameProductPage({ guideSlug }: GameProductPageProps) {
         </section>
 
         <FaqSection
-          heading="WARDOGS Hacks product FAQ"
+          heading="Wardogs Cheats product FAQ"
           intro="Status, features, delivery and load questions before checkout."
           items={PRODUCT_PAGE_FAQS}
         />

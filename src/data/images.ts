@@ -21,11 +21,11 @@ export const IMAGE_SEO: Record<
   }
 > = {
   wardogs: {
-    alt: 'WARDOGS hacks product artwork for the tactical FPS',
-    title: 'WARDOGS Hacks Product Details',
+    alt: 'Wardogs Cheats product artwork for the tactical FPS',
+    title: 'Wardogs Cheats Product Details',
     caption: 'WARDOGS ESP, radar, aim assistance and Early Access compatibility',
-    heroAlt: 'WARDOGS hacks features and PC compatibility',
-    heroTitle: 'WARDOGS Hacks Features',
+    heroAlt: 'Wardogs Cheats features and PC compatibility',
+    heroTitle: 'Wardogs Cheats Features',
     heroCaption: 'Review WARDOGS ESP, radar, aim features and current status',
   },
 }
@@ -39,37 +39,37 @@ export const PAGE_IMAGES: Record<
   home: {
     src: WARDOGS_SOLDIER_HERO,
     alt: 'Tactical soldier overlooking a mountainous WARDOGS battlefield',
-    title: 'WARDOGS Hacks for PC',
+    title: 'Wardogs Cheats for PC',
     caption: 'WARDOGS player ESP, radar and aim feature overview.',
   },
   forums: {
     src: WARDOGS_OBJECTIVE,
-    alt: 'WARDOGS hacks setup and status guide artwork',
-    title: 'WARDOGS Hacks Guides',
+    alt: 'Wardogs Cheats setup and status guide artwork',
+    title: 'Wardogs Cheats Guides',
     caption: 'Setup, hotkey and compatibility guides for WARDOGS.',
   },
   reviews: {
     src: WARDOGS_TACTICAL,
-    alt: 'WARDOGS hacks product evaluation artwork',
-    title: 'WARDOGS Hacks Reviews',
+    alt: 'Wardogs Cheats product evaluation artwork',
+    title: 'Wardogs Cheats Reviews',
     caption: 'Feature and compatibility feedback for the new WARDOGS release.',
   },
   faq: {
     src: WARDOGS_OBJECTIVE,
-    alt: 'WARDOGS hacks frequently asked questions artwork',
-    title: 'WARDOGS Hacks FAQ',
+    alt: 'Wardogs Cheats frequently asked questions artwork',
+    title: 'Wardogs Cheats FAQ',
     caption: 'Compatibility, feature and setup answers for WARDOGS.',
   },
   support: {
     src: WARDOGS_TACTICAL,
-    alt: 'WARDOGS hacks support artwork',
-    title: 'WARDOGS Hacks Support',
+    alt: 'Wardogs Cheats support artwork',
+    title: 'Wardogs Cheats Support',
     caption: 'Delivery, loader and setup support for WARDOGS.',
   },
   product: {
     src: WARDOGS_OBJECTIVE,
     alt: 'WARDOGS ESP radar and aim product artwork',
-    title: 'WARDOGS Hacks Features',
+    title: 'Wardogs Cheats Features',
     caption: 'Product details for WARDOGS ESP, radar and aim assistance.',
   },
 }

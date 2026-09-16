@@ -1,11 +1,12 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join, relative } from 'node:path'
+import { SITE_HOST, SITE_URL, siteUrl } from './site-url.mjs'
 
 const root = join(import.meta.dirname, '..')
 const dist = join(root, 'dist')
-const site = 'https://wardogshacks.net'
+const site = SITE_URL
+const canonicalPrefix = `${site}/`
 const failures = []
-
 function fail(message) {
   failures.push(message)
 }
@@ -49,6 +50,12 @@ for (const file of files) {
     if (!html.includes(`rel="canonical" href="${canonicalUrl}"`)) {
       fail(`${page}: missing self-referencing canonical ${canonicalUrl}`)
     }
+    if (!canonicalUrl.startsWith(canonicalPrefix)) {
+      fail(`${page}: canonical is not on ${SITE_HOST}`)
+    }
+    if (html.includes('wardogshacks.net')) {
+      fail(`${page}: HTML still references wardogshacks.net`)
+    }
     if (!html.includes(`hreflang="en" href="${canonicalUrl}"`)) {
       fail(`${page}: missing self-referencing hreflang=en`)
     }
@@ -80,10 +87,10 @@ const importantPages = [
   readFileSync(join(dist, 'forums', 'index.html'), 'utf8'),
 ]
 
-if (!home.includes('<title>WARDOGS Hacks | ESP, Aimbot &amp; Radar for PC</title>')) {
+if (!home.includes('<title>Wardogs Cheats | ESP, Aimbot &amp; Radar for PC</title>')) {
   fail('Homepage does not own the exact transactional title')
 }
-if (product.includes('<title>Buy WARDOGS Hacks')) fail('Product details page competes with homepage')
+if (product.includes('<title>Buy Wardogs Cheats')) fail('Product details page competes with homepage')
 if ((faq.match(/"@type":"FAQPage"/g) || []).length !== 1) fail('/faq must own one FAQPage')
 for (const [name, html] of [
   ['home', home],
@@ -98,7 +105,7 @@ for (const [name, html] of [
   ['product', product],
   ['reviews', reviews],
 ]) {
-  if (!html.includes('"@id":"https://wardogshacks.net/#product"')) {
+  if (!html.includes(`"@id":"${site}/#product"`)) {
     fail(`${name}: missing shared Product ID`)
   }
 }
@@ -151,6 +158,14 @@ for (const url of expectedUrls) {
 for (const url of uniqueSitemapUrls) {
   if (!expectedUrls.has(url)) fail(`sitemap.xml contains URL without a built page: ${url}`)
 }
+for (const loc of pageLocs) {
+  if (!loc.startsWith(canonicalPrefix)) fail(`sitemap.xml URL not on ${SITE_HOST}: ${loc}`)
+  if (loc.includes('wardogshacks.net')) fail(`sitemap.xml still lists wardogshacks.net: ${loc}`)
+}
+for (const loc of imageLocs) {
+  if (!loc.startsWith(canonicalPrefix)) fail(`sitemap image URL not on ${SITE_HOST}: ${loc}`)
+}
+if (sitemap.includes('wardogshacks.net')) fail('sitemap.xml still references wardogshacks.net')
 if (uniqueSitemapUrls.size !== pageLocs.length) fail('sitemap.xml contains duplicate URLs')
 if (urlBlocks.length !== expectedUrls.size) {
   fail(`sitemap.xml must contain exactly ${expectedUrls.size} built page URLs`)
@@ -193,9 +208,10 @@ if (!existsSync(join(dist, 'robots.txt'))) fail('dist/robots.txt is missing')
 if (!existsSync(join(dist, '_routes.json'))) fail('dist/_routes.json is missing')
 
 const robots = readFileSync(join(dist, 'robots.txt'), 'utf8')
-if (!robots.includes('Sitemap: https://wardogshacks.net/sitemap.xml')) {
-  fail('robots.txt must point at the canonical HTTPS sitemap')
+if (!robots.includes(`Sitemap: ${siteUrl('/sitemap.xml')}`)) {
+  fail(`robots.txt must point at the canonical HTTPS sitemap on ${SITE_HOST}`)
 }
+if (robots.includes('wardogshacks.net')) fail('robots.txt still references wardogshacks.net')
 if (!robots.includes('Allow: /sitemap.xml')) {
   fail('robots.txt must explicitly allow /sitemap.xml')
 }

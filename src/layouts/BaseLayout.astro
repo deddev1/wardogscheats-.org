@@ -58,7 +58,7 @@ const isHome = seo.path === '/' || seo.path === ''
     <meta name="googlebot" content={robots} />
     <meta name="author" content={SITE_NAME} />
     <link rel="canonical" href={url} />
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="sitemap" type="application/xml" href={absoluteUrl('/sitemap.xml')} />
     {/* Self-referencing hreflang must match this page URL exactly */}
     <link rel="alternate" hreflang="en" href={url} />
     <link rel="alternate" hreflang="x-default" href={url} />

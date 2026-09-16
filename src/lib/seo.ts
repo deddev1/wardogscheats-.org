@@ -28,10 +28,10 @@ export function siteIdentityGraph() {
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
       alternateName: [
-        'wardogs hacks',
-        'wardogs hacks',
-        'the wardogs hacks',
-        'wardogshacks',
+        'wardogs cheats',
+        'Wardogs Cheats',
+        'wardogscheats',
+        'wardogscheats.org',
         SITE_URL.replace('https://', ''),
       ],
       url: SITE_URL,
@@ -55,9 +55,9 @@ export function siteIdentityGraph() {
       inLanguage: 'en',
       about: {
         '@type': 'Thing',
-        name: 'WARDOGS Hacks',
+        name: 'Wardogs Cheats',
         description:
-          'Hacks for WARDOGS only — ESP, soft aim, radar and live EAC status.',
+          'Cheats for WARDOGS on wardogscheats.org — ESP, soft aim, radar and live EAC status.',
       },
       publisher: { '@id': `${SITE_URL}/#organization` },
     },

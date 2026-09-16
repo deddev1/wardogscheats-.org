@@ -5,12 +5,12 @@
 import { existsSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { SITE_URL, siteUrl } from './site-url.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const publicDir = join(root, 'public')
 const dataDir = join(root, 'src', 'data')
 const pagesDir = join(root, 'src', 'pages')
-const SITE = (process.env.SITE_URL || 'https://wardogshacks.net').replace(/\/$/, '')
 const TODAY = new Date().toLocaleDateString('en-CA')
 const HREFLANG = ['en', 'x-default']
 
@@ -39,10 +39,6 @@ function escapeXml(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&apos;')
-}
-
-function siteUrl(path) {
-  return !path || path === '/' ? `${SITE}/` : `${SITE}${path.startsWith('/') ? path : `/${path}`}`
 }
 
 function loadGames() {
@@ -109,18 +105,18 @@ function buildSitemap(games, forums) {
       images: [
         {
           src: SOLDIER,
-          title: 'WARDOGS Hacks Hero',
-          caption: 'Tactical soldier hero for WARDOGS Hacks on PC.',
+          title: 'Wardogs Cheats Hero',
+          caption: 'Tactical soldier hero for Wardogs Cheats on PC.',
         },
         {
           src: TACTICAL,
-          title: 'WARDOGS Hacks Tactical Artwork',
+          title: 'Wardogs Cheats Tactical Artwork',
           caption: 'Homepage artwork for WARDOGS ESP, radar and soft aim.',
         },
         {
           src: OG_DEFAULT,
-          title: 'WARDOGS Hacks Social Preview',
-          caption: 'Default Open Graph image for WARDOGS Hacks.',
+          title: 'Wardogs Cheats Social Preview',
+          caption: 'Default Open Graph image for Wardogs Cheats.',
         },
       ],
     }),
@@ -155,7 +151,7 @@ function buildSitemap(games, forums) {
       images: [
         {
           src: OBJECTIVE,
-          title: 'WARDOGS Hacks Forum Artwork',
+          title: 'Wardogs Cheats Forum Artwork',
           caption: 'Artwork reference for setup and feature threads.',
         },
       ],
@@ -182,7 +178,7 @@ function buildSitemap(games, forums) {
       images: [
         {
           src: TACTICAL,
-          title: 'WARDOGS Hacks Review Artwork',
+          title: 'Wardogs Cheats Review Artwork',
           caption: 'Artwork accompanying verified buyer reviews.',
         },
       ],
@@ -194,7 +190,7 @@ function buildSitemap(games, forums) {
       images: [
         {
           src: OBJECTIVE,
-          title: 'WARDOGS Hacks FAQ Artwork',
+          title: 'Wardogs Cheats FAQ Artwork',
           caption: 'Product artwork accompanying pre-purchase answers.',
         },
       ],
@@ -206,7 +202,7 @@ function buildSitemap(games, forums) {
       images: [
         {
           src: TACTICAL,
-          title: 'WARDOGS Hacks Support Artwork',
+          title: 'Wardogs Cheats Support Artwork',
           caption: 'Artwork accompanying load and delivery support.',
         },
       ],
@@ -218,8 +214,8 @@ function buildSitemap(games, forums) {
       images: [
         {
           src: OG_DEFAULT,
-          title: 'WARDOGS Hacks Privacy Policy',
-          caption: 'Privacy policy for wardogshacks.net orders and support.',
+          title: 'Wardogs Cheats Privacy Policy',
+          caption: 'Privacy policy for wardogscheats.org orders and support.',
         },
       ],
     }),
@@ -230,8 +226,8 @@ function buildSitemap(games, forums) {
       images: [
         {
           src: OG_DEFAULT,
-          title: 'WARDOGS Hacks Terms of Use',
-          caption: 'License terms and risk disclaimer for WARDOGS Hacks.',
+          title: 'Wardogs Cheats Terms of Use',
+          caption: 'License terms and risk disclaimer for Wardogs Cheats.',
         },
       ],
     }),
@@ -242,8 +238,8 @@ function buildSitemap(games, forums) {
       images: [
         {
           src: OG_DEFAULT,
-          title: 'WARDOGS Hacks Refund Policy',
-          caption: 'Refund rules for digital WARDOGS Hacks licenses.',
+          title: 'Wardogs Cheats Refund Policy',
+          caption: 'Refund rules for digital Wardogs Cheats licenses.',
         },
       ],
     }),

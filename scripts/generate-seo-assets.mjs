@@ -16,7 +16,7 @@ function escapeXml(value) {
   return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
 }
 
-function artwork(width, height, eyebrow, title, subtitle, footer = 'wardogshacks.net') {
+function artwork(width, height, eyebrow, title, subtitle, footer = 'wardogscheats.org') {
   const titleSize = Math.round(width * 0.066)
   const subtitleSize = Math.round(width * 0.026)
   return Buffer.from(`
@@ -52,7 +52,7 @@ await Promise.all([
       1200,
       630,
       'PC EARLY ACCESS · LIVE STATUS',
-      'WARDOGS Hacks',
+      'Wardogs Cheats',
       'Player ESP · Radar · Aim Assistance',
     ),
   )
@@ -85,7 +85,7 @@ await Promise.all([
       1200,
       675,
       '100-PLAYER TACTICAL FPS',
-      'WARDOGS Hacks',
+      'Wardogs Cheats',
       'Player intelligence · Vehicles · Control Zone',
     ),
   )
@@ -107,7 +107,7 @@ await Promise.all([
       1920,
       1080,
       'BULKHEAD · TEAM17 · PC EARLY ACCESS',
-      'WARDOGS Hacks',
+      'Wardogs Cheats',
       'Tactical awareness for all-out warfare',
     ),
   )

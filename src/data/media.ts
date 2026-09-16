@@ -16,7 +16,7 @@ export const WARDOGS_OBJECTIVE = '/media/wardogs-control-zone.jpg'
 export const WARDOGS_HOME_VIDEO = {
   id: 'h5xrkTHh0nU',
   url: 'https://www.youtube.com/watch?v=h5xrkTHh0nU',
-  title: 'WARDOGS Hacks preview video',
+  title: 'Wardogs Cheats preview video',
   caption: 'Gameplay preview for WARDOGS ESP, radar and soft aim on PC.',
 } as const
 
@@ -24,7 +24,7 @@ export const PAGE_MEDIA = {
   home: {
     image: WARDOGS_SOLDIER_HERO,
     alt: 'Tactical soldier overlooking a mountainous WARDOGS battlefield',
-    title: 'WARDOGS Hacks for PC',
+    title: 'Wardogs Cheats for PC',
     caption: 'Feature overview for WARDOGS ESP, radar and aim assistance.',
   },
   product: {
@@ -35,26 +35,26 @@ export const PAGE_MEDIA = {
   },
   forums: {
     image: WARDOGS_OBJECTIVE,
-    alt: 'WARDOGS hacks guides and setup artwork',
-    title: 'WARDOGS Hacks Guides',
+    alt: 'Wardogs Cheats guides and setup artwork',
+    title: 'Wardogs Cheats Guides',
     caption: 'Reference for setup, hotkeys, features and status articles.',
   },
   reviews: {
     image: WARDOGS_TACTICAL,
-    alt: 'WARDOGS hacks product review artwork',
-    title: 'WARDOGS Hacks Reviews',
+    alt: 'Wardogs Cheats product review artwork',
+    title: 'Wardogs Cheats Reviews',
     caption: 'Advertised features and compatibility reviewed for the recent release.',
   },
   faq: {
     image: WARDOGS_OBJECTIVE,
-    alt: 'WARDOGS hacks FAQ artwork',
-    title: 'WARDOGS Hacks FAQ',
+    alt: 'Wardogs Cheats FAQ artwork',
+    title: 'Wardogs Cheats FAQ',
     caption: 'Compatibility, status and setup answers for WARDOGS.',
   },
   support: {
     image: WARDOGS_TACTICAL,
-    alt: 'WARDOGS hacks support artwork',
-    title: 'WARDOGS Hacks Support',
+    alt: 'Wardogs Cheats support artwork',
+    title: 'Wardogs Cheats Support',
     caption: 'Delivery, loader and setup help for WARDOGS.',
   },
 } as const satisfies Record<string, SeoMediaItem>
@@ -63,7 +63,7 @@ const FORUM_MEDIA: Record<string, SeoMediaItem> = {
   'features-list': {
     ...PAGE_MEDIA.product,
     alt: 'WARDOGS player ESP radar and aim features',
-    title: 'WARDOGS Hacks Feature List',
+    title: 'Wardogs Cheats Feature List',
     caption: 'Reference for player ESP, vehicle ESP, radar and aim options.',
   },
   hotkeys: {
@@ -74,19 +74,19 @@ const FORUM_MEDIA: Record<string, SeoMediaItem> = {
   },
   'complete-setup': {
     ...PAGE_MEDIA.product,
-    alt: 'WARDOGS hacks complete loader setup',
+    alt: 'Wardogs Cheats complete loader setup',
     title: 'Complete WARDOGS Setup Preview',
     caption: 'Delivery, exclusions and clean load-order reference.',
   },
   'disable-antivirus': {
     ...PAGE_MEDIA.home,
-    alt: 'WARDOGS hacks antivirus exclusion setup',
+    alt: 'Wardogs Cheats antivirus exclusion setup',
     title: 'Loader Exclusion Setup Preview',
-    caption: 'Reference for antivirus exclusions before loading WARDOGS hacks.',
+    caption: 'Reference for antivirus exclusions before loading Wardogs Cheats.',
   },
   'undetected-status': {
     ...PAGE_MEDIA.product,
-    alt: 'WARDOGS hacks current product status',
+    alt: 'Wardogs Cheats current product status',
     title: 'WARDOGS Loader Status Preview',
     caption: 'Reference for checking Undetected or Updating before loading.',
   },

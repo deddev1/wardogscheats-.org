@@ -1,4 +1,4 @@
-# WARDOGS Hacks (wardogshacks.net)
+# Wardogs Cheats (wardogscheats.org)
 
 Static Astro site for WARDOGS (WARDOGS) cheats — Cloudflare Pages ready.
 

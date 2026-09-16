@@ -1,19 +1,20 @@
 import { WARDOGS_OG, PAGE_IMAGES } from './images'
 
-export const SITE_URL = 'https://wardogshacks.net'
-export const SITE_NAME = 'WARDOGS Hacks'
-export const SITE_HOST = 'wardogshacks.net'
+export const SITE_URL = 'https://wardogscheats.org'
+export const SITE_NAME = 'Wardogs Cheats'
+export const SITE_HOST = 'wardogscheats.org'
 
 /**
  * Sole purpose — used in schema + about copy.
- * Single-product site: WARDOGS hacks for the PC Early Access release.
+ * Single-product site: Wardogs Cheats for the PC Early Access release.
  */
 export const SITE_PURPOSE =
-  'WARDOGS Hacks covers ESP, player information, radar, aim assistance and loader status for the 100-player tactical FPS by BULKHEAD and Team17.'
+  'Wardogs Cheats covers ESP, player information, radar, aim assistance and loader status for the 100-player tactical FPS WARDOGS by BULKHEAD and Team17 on wardogscheats.org.'
 
 export const SITE_ABOUT = [
-  'WARDOGS Hacks',
-  'wardogs hacks',
+  'Wardogs Cheats',
+  'wardogs cheats',
+  'wardogscheats.org',
   'WARDOGS ESP',
   'WARDOGS aimbot',
   'WARDOGS radar',
@@ -47,25 +48,25 @@ export type PageSeo = {
 /** Unique SEO per route — commercial / transactional intent. */
 export const SEO = {
   home: {
-    title: 'WARDOGS Hacks | ESP, Aimbot & Radar for PC',
+    title: 'Wardogs Cheats | ESP, Aimbot & Radar for PC',
     description:
-      'WARDOGS hacks for Windows PC with player ESP, soft aim, 2D radar and live loader status for BULKHEAD’s 100-player Early Access FPS.',
+      'Wardogs Cheats for WARDOGS on Windows PC — player ESP, soft aim, 2D radar and live loader status on wardogscheats.org.',
     path: '/',
     ogType: 'website',
     image: PAGE_IMAGES.home.src,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   },
   forums: {
-    title: 'WARDOGS Hacks Guides | Setup, Hotkeys & Status',
+    title: 'Wardogs Cheats Guides | Setup, Hotkeys & Status',
     description:
-      'WARDOGS hacks guides covering features, hotkeys, setup, antivirus exclusions and loader status for the Steam Early Access build.',
+      'Wardogs Cheats guides covering features, hotkeys, setup, antivirus exclusions and loader status for the Steam Early Access build.',
     path: '/forums',
     ogType: 'website',
     image: PAGE_IMAGES.forums.src,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
   },
   reviews: {
-    title: 'WARDOGS Hacks Reviews | Before You Buy',
+    title: 'Wardogs Cheats Reviews | Before You Buy',
     description:
       'Early Access player feedback on WARDOGS ESP, soft aim, radar and post-patch rebuilds before you choose a license.',
     path: '/reviews',
@@ -74,7 +75,7 @@ export const SEO = {
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
   },
   faq: {
-    title: 'WARDOGS Hacks FAQ | Compatibility, Setup & Status',
+    title: 'Wardogs Cheats FAQ | Compatibility, Setup & Status',
     description:
       'Answers about WARDOGS PC compatibility, Early Access updates, ESP features, setup, delivery and loader status.',
     path: '/faq',
@@ -83,16 +84,16 @@ export const SEO = {
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
   },
   support: {
-    title: 'WARDOGS Hacks Support | Loader & Setup Help',
+    title: 'Wardogs Cheats Support | Loader & Setup Help',
     description:
-      'Support for WARDOGS hacks delivery, Windows setup, loader errors, updates and account-specific order questions.',
+      'Support for Wardogs Cheats delivery, Windows setup, loader errors, updates and account-specific order questions.',
     path: '/support',
     ogType: 'website',
     image: PAGE_IMAGES.support.src,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1',
   },
   product: {
-    title: 'WARDOGS Hack Features | ESP, Aimbot & Radar',
+    title: 'Wardogs Cheats Features | ESP, Aimbot & Radar',
     description:
       'Compare WARDOGS player ESP, vehicle ESP, soft aim, 2D radar, stream-proof options and current PC Early Access compatibility.',
     path: '/wardogs-hacks',
@@ -103,12 +104,12 @@ export const SEO = {
 } as const satisfies Record<string, PageSeo>
 
 export const HOME_HEADINGS = {
-  h1: 'WARDOGS Hack for PC',
+  h1: 'Wardogs Cheats for PC',
   h2Features: 'ESP, soft aim and radar',
   h2Featured: 'WARDOGS ESP and Radar',
   h2About: 'Built for the new WARDOGS release',
-  h2Access: 'Get WARDOGS Hacks',
-  h2Faq: 'WARDOGS Hacks FAQ',
+  h2Access: 'Get Wardogs Cheats',
+  h2Faq: 'Wardogs Cheats FAQ',
 } as const
 
 export function absoluteUrl(path: string) {

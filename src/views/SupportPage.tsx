@@ -21,7 +21,7 @@ export function SupportPage() {
               {SITE_NAME} · Help · {SITE_HOST}
             </p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-              WARDOGS Hacks Support
+              Wardogs Cheats Support
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/55">
               {SUPPORT_INTRO} Play WARDOGS from the{' '}
@@ -88,7 +88,7 @@ export function SupportPage() {
 
         <FaqSection
           id="faq"
-          heading="WARDOGS Hacks support FAQ"
+          heading="Wardogs Cheats support FAQ"
           intro="Load, delivery, menu, setup, config and EAC answers for WARDOGS buyers."
           items={SUPPORT_FAQS}
         />
@@ -100,7 +100,7 @@ export function SupportPage() {
                 Need help now
               </p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                Open WARDOGS Hacks or checkout support
+                Open Wardogs Cheats or checkout support
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-white/55">
                 Confirm Undetected status on the product page, then buy or reopen your order for
@@ -115,7 +115,7 @@ export function SupportPage() {
                 Product details
               </a>
               <CheckoutLink className="cta-gradient inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium text-white">
-                Buy WARDOGS Hacks
+                Buy Wardogs Cheats
               </CheckoutLink>
             </div>
           </div>

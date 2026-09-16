@@ -25,7 +25,7 @@ export function SiteFooter({ currentPath }: SiteFooterProps) {
               <span className="font-semibold text-z-ink">{SITE_NAME}</span>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-white/55">
-              WARDOGS hacks for PC — ESP, soft aim, radar and live EAC status. Built for Early
+              Wardogs Cheats for PC — ESP, soft aim, radar and live EAC status. Built for Early
               Access players only.
             </p>
           </div>

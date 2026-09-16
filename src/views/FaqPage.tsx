@@ -22,16 +22,16 @@ export function FaqPage() {
               {SITE_NAME} · FAQ · {SITE_HOST}
             </p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-              WARDOGS Hacks FAQ
+              Wardogs Cheats FAQ
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/55">
-              Frequently asked questions about WARDOGS Hacks for WARDOGS — Undetected status,
+              Frequently asked questions about Wardogs Cheats for WARDOGS — Undetected status,
               ESP, soft aim, radar, how to buy, how to load, support, reviews and refunds.
             </p>
             <p className="mt-3 text-sm text-white/45">
               Related:{' '}
               <a href="/" className="text-white/75 underline-offset-2 hover:underline">
-                Buy WARDOGS Hacks
+                Buy Wardogs Cheats
               </a>
               {' · '}
               <a href="/support" className="text-white/75 underline-offset-2 hover:underline">
@@ -62,7 +62,7 @@ export function FaqPage() {
 
         <FaqSection
           id="faq"
-          heading="All WARDOGS Hacks questions"
+          heading="All Wardogs Cheats questions"
           intro="Straight answers on buying, loading, Undetected status, and features."
           items={SITE_FAQS}
           className="border-t-0 pt-10 sm:pt-12"
@@ -86,7 +86,7 @@ export function FaqPage() {
                 Support
               </a>
               <CheckoutLink className="cta-gradient inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium text-white">
-                Buy WARDOGS Hacks
+                Buy Wardogs Cheats
               </CheckoutLink>
             </div>
           </div>

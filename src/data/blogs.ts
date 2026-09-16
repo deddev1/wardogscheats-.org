@@ -23,9 +23,9 @@ export type BlogPost = {
 export const BLOGS: BlogPost[] = [
   {
     slug: 'features-list',
-    title: 'WARDOGS Hacks Features List',
+    title: 'Wardogs Cheats Features List',
     excerpt:
-      'Full features list before you buy WARDOGS Hacks — player ESP, vehicle ESP, radar, soft aim and stream-proof options.',
+      'Full features list before you buy Wardogs Cheats — player ESP, vehicle ESP, radar, soft aim and stream-proof options.',
     metaTitle: 'WARDOGS ESP, Radar & Soft Aim Feature List',
     metaDescription:
       'Compare WARDOGS player ESP, vehicle ESP, 2D radar, soft aim and stream-proof features included before checkout.',
@@ -37,7 +37,7 @@ export const BLOGS: BlogPost[] = [
       {
         heading: 'What you get when you buy',
         body: [
-          'WARDOGS Hacks is one product for WARDOGS on Windows Early Access. You are buying a loader + license with live Undetected / Updating status on wardogshacks.net — not a random multi-game pack.',
+          'Wardogs Cheats is one product for WARDOGS on Windows Early Access. You are buying a loader + license with live Undetected / Updating status on wardogscheats.org — not a random multi-game pack.',
           'Open the product page, confirm status, then checkout. Delivery is digital on supported builds.',
         ],
       },
@@ -55,19 +55,19 @@ export const BLOGS: BlogPost[] = [
       {
         heading: 'Next step',
         body: [
-          'Read the hotkeys and setup guides, then buy WARDOGS Hacks when status is Undetected.',
+          'Read the hotkeys and setup guides, then buy Wardogs Cheats when status is Undetected.',
         ],
       },
     ],
   },
   {
     slug: 'hotkeys',
-    title: 'WARDOGS Hacks Hotkeys',
+    title: 'Wardogs Cheats Hotkeys',
     excerpt:
-      'Hotkeys and menu keys for WARDOGS Hacks after load — open menu, toggles, and what to leave unbound.',
+      'Hotkeys and menu keys for Wardogs Cheats after load — open menu, toggles, and what to leave unbound.',
     metaTitle: 'WARDOGS ESP Menu Hotkeys | Post-Checkout Setup',
     metaDescription:
-      'Hotkeys for WARDOGS Hacks after you buy and load: open menu, ESP toggles, radar, soft aim. Simple key list for WARDOGS.',
+      'Hotkeys for Wardogs Cheats after you buy and load: open menu, ESP toggles, radar, soft aim. Simple key list for WARDOGS.',
     searchTerms: 'hotkeys menu keys esp toggle radar soft aim',
     date: '2026-09-15',
     readMinutes: 4,
@@ -76,7 +76,7 @@ export const BLOGS: BlogPost[] = [
       {
         heading: 'After load',
         body: [
-          'Buy WARDOGS Hacks, check Undetected, launch the game, run the loader, wait for a clean inject. Then open the menu with the key listed in your delivery notes (build-specific).',
+          'Buy Wardogs Cheats, check Undetected, launch the game, run the loader, wait for a clean inject. Then open the menu with the key listed in your delivery notes (build-specific).',
           'If the menu does not open, do not spam keys — reopen support with your order ID and build name.',
         ],
       },
@@ -100,9 +100,9 @@ export const BLOGS: BlogPost[] = [
   },
   {
     slug: 'complete-setup',
-    title: 'How to Complete WARDOGS Hacks Setup',
+    title: 'How to Complete Wardogs Cheats Setup',
     excerpt:
-      'Complete setup for WARDOGS Hacks: buy, disable blockers, launch WARDOGS, load, enable ESP, confirm hotkeys.',
+      'Complete setup for Wardogs Cheats: buy, disable blockers, launch WARDOGS, load, enable ESP, confirm hotkeys.',
     metaTitle: 'Complete WARDOGS Loader Setup & Load Order',
     metaDescription:
       'Complete setup after checkout: delivery checklist, antivirus exclusions, WARDOGS load order, troubleshooting, ESP configuration and hotkeys.',
@@ -114,7 +114,7 @@ export const BLOGS: BlogPost[] = [
       {
         heading: '1) Buy and confirm status',
         body: [
-          'Open Buy WARDOGS Hacks on wardogshacks.net. If status is Updating, wait. If Undetected, checkout and use only the official delivery link from this site.',
+          'Open Buy Wardogs Cheats on wardogscheats.org. If status is Updating, wait. If Undetected, checkout and use only the official delivery link from this site.',
         ],
       },
       {
@@ -129,7 +129,7 @@ export const BLOGS: BlogPost[] = [
         heading: '3) Load order',
         body: [
           'Start WARDOGS on Steam.',
-          'Run the WARDOGS Hacks loader / license as delivered.',
+          'Run the Wardogs Cheats loader / license as delivered.',
           'Wait for a successful load.',
           'Open the menu → player ESP on → vehicle ESP on → radar on → stream-proof if you record.',
           'Soft aim off unless you specifically want it.',
@@ -160,12 +160,12 @@ export const BLOGS: BlogPost[] = [
   },
   {
     slug: 'disable-antivirus',
-    title: 'How to Turn Off Antivirus for WARDOGS Hacks',
+    title: 'How to Turn Off Antivirus for Wardogs Cheats',
     excerpt:
-      'Turn off or allowlist antivirus so WARDOGS Hacks loader can run after purchase — Windows Defender and common AV steps.',
+      'Turn off or allowlist antivirus so Wardogs Cheats loader can run after purchase — Windows Defender and common AV steps.',
     metaTitle: 'WARDOGS Loader Antivirus Exclusions | Windows Defender',
     metaDescription:
-      'How to turn off or allowlist antivirus for WARDOGS Hacks after you buy — Defender exclusions, false positives, then load on Undetected.',
+      'How to turn off or allowlist antivirus for Wardogs Cheats after you buy — Defender exclusions, false positives, then load on Undetected.',
     searchTerms: 'disable antivirus defender exclusion allowlist loader false positive',
     date: '2026-09-15',
     readMinutes: 5,
@@ -174,14 +174,14 @@ export const BLOGS: BlogPost[] = [
       {
         heading: 'Why this step exists',
         body: [
-          'Cheat loaders are often flagged as generic “trojan” heuristics even when you bought WARDOGS Hacks from wardogshacks.net. That blocks the load. Fix the AV step before you spam the loader.',
+          'Cheat loaders are often flagged as generic “trojan” heuristics even when you bought Wardogs Cheats from wardogscheats.org. That blocks the load. Fix the AV step before you spam the loader.',
         ],
       },
       {
         heading: 'Windows Defender (common path)',
         body: [
           'Open Windows Security → Virus & threat protection → Manage settings.',
-          'Add an exclusion for the folder that holds your official WARDOGS Hacks loader (the path from your delivery email).',
+          'Add an exclusion for the folder that holds your official Wardogs Cheats loader (the path from your delivery email).',
           'If the file was already quarantined, restore it from Protection history, then exclude the folder.',
           'Optional short window: pause real-time protection only while you load, then turn it back on. Prefer a permanent exclusion for the delivery folder over leaving Defender off all day.',
         ],
@@ -205,7 +205,7 @@ export const BLOGS: BlogPost[] = [
     slug: 'undetected-status',
     title: 'Check Undetected Before You Buy or Load',
     excerpt:
-      'Undetected vs Updating for WARDOGS Hacks — check status before checkout and before every load after a WARDOGS patch.',
+      'Undetected vs Updating for Wardogs Cheats — check status before checkout and before every load after a WARDOGS patch.',
     metaTitle: 'WARDOGS Loader Status | Undetected or Updating',
     metaDescription:
       'Check the current Undetected or Updating state before checkout and before loading after a WARDOGS or EAC patch.',
@@ -217,7 +217,7 @@ export const BLOGS: BlogPost[] = [
       {
         heading: 'Status is part of the purchase',
         body: [
-          'Do not buy or load blind. The product page shows Undetected or Updating after WARDOGS / EAC patches. That status is the go / no-go for WARDOGS Hacks.',
+          'Do not buy or load blind. The product page shows Undetected or Updating after WARDOGS / EAC patches. That status is the go / no-go for Wardogs Cheats.',
         ],
       },
       {

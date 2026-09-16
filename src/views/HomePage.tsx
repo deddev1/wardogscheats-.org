@@ -56,12 +56,12 @@ export function HomePage() {
                   {HOME_HEADINGS.h1}
                 </h1>
                 <p className="mt-5 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg">
-                  WARDOGS hacks for Windows PC with player ESP, soft aim, 2D radar and live
+                  Wardogs Cheats for Windows PC with player ESP, soft aim, 2D radar and live
                   loader status for BULKHEAD’s 100-player Early Access FPS.
                 </p>
 
                 <div className="relative z-50 mt-7">
-                  <HeroSearch placeholder="Search WARDOGS Hacks…" />
+                  <HeroSearch placeholder="Search Wardogs Cheats…" />
                 </div>
               </div>
 
@@ -112,7 +112,7 @@ export function HomePage() {
         <section className="page-x py-12">
           <div className="mx-auto max-w-6xl">
             <h2 className="mb-5 text-xl font-semibold tracking-tight text-white sm:text-2xl">
-              WARDOGS Hacks preview
+              Wardogs Cheats preview
             </h2>
             <div className="overflow-hidden rounded-2xl border border-z-soft/20 bg-black shadow-glow">
               <div className="relative aspect-video w-full">
@@ -161,7 +161,7 @@ export function HomePage() {
                   Forums
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                  WARDOGS Hacks forums
+                  Wardogs Cheats forums
                 </h2>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/55 sm:text-base">
                   Setup, antivirus, hotkeys, features, and load steps before you buy.
@@ -203,7 +203,7 @@ export function HomePage() {
 
             <div className="page-card mt-8 flex flex-col gap-4 rounded-2xl p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
               <div>
-                <h3 className="text-lg font-semibold text-white">WARDOGS Hacks product</h3>
+                <h3 className="text-lg font-semibold text-white">Wardogs Cheats product</h3>
                 <p className="mt-1 text-sm text-white/55">
                   Detailed features · compatibility · price · checkout
                 </p>
@@ -275,12 +275,12 @@ export function HomePage() {
                   {HOME_HEADINGS.h2Access}
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-white/55 sm:text-base">
-                  Confirm WARDOGS Hacks status is Undetected, then checkout for digital delivery
+                  Confirm Wardogs Cheats status is Undetected, then checkout for digital delivery
                   on supported Windows Early Access builds.
                 </p>
               </div>
               <CheckoutLink className="cta-gradient mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:w-fit">
-                Buy WARDOGS Hacks
+                Buy Wardogs Cheats
               </CheckoutLink>
             </div>
           </div>

@@ -81,13 +81,13 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
 
             <div className="page-card mt-12 rounded-2xl p-6 sm:p-8">
               <h2 className="text-lg font-semibold text-white">
-                Ready for WARDOGS Hacks?
+                Ready for Wardogs Cheats?
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-white/55">
                 Check live Undetected status, then buy ESP, wallhack, and spoofer for
                 WARDOGS on {SITE_HOST}. Need help? Read{' '}
                 <a href="/support" className="text-white/80 underline-offset-2 hover:underline">
-                  WARDOGS Hacks support
+                  Wardogs Cheats support
                 </a>
                 {' '}or{' '}
                 <a href="/reviews" className="text-white/80 underline-offset-2 hover:underline">
@@ -118,7 +118,7 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
                   Support
                 </a>
                 <CheckoutLink className="cta-gradient inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium text-white">
-                  Buy WARDOGS Hacks
+                  Buy Wardogs Cheats
                 </CheckoutLink>
               </div>
             </div>

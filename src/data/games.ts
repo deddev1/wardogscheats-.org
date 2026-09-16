@@ -7,7 +7,7 @@ export type Game = {
   popular?: boolean
 }
 
-/** Site is WARDOGS Hacks only — no other titles in the catalog. */
+/** Site is Wardogs Cheats only — no other titles in the catalog. */
 export const GAMES: Game[] = [
   { slug: 'wardogs', name: 'WARDOGS', status: 'Updating', popular: true },
 ]
@@ -25,7 +25,7 @@ export function parseGuideSlug(param: string) {
 }
 
 /**
- * Feature list tuned to what ranks for WARDOGS Hacks
+ * Feature list tuned to what ranks for Wardogs Cheats
  * Feature bullets for the product page — ESP & awareness first.
  */
 export const GUIDE_FEATURES = [

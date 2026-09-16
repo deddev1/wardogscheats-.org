@@ -111,7 +111,7 @@ export function SiteLinkHub({ currentPath, variant = 'section' }: SiteLinkHubPro
           id="site-link-hub-heading"
           className="mt-2 text-xl font-semibold tracking-tight text-white sm:text-2xl"
         >
-          WARDOGS Hacks sitemap
+          Wardogs Cheats sitemap
         </h2>
         <p className="mt-2 max-w-2xl text-sm text-white/50">
           Every indexed page — product, forums, FAQ, support, reviews — plus the official

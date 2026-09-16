@@ -9,7 +9,15 @@ compatibility_date = "2026-09-12"
 [build]
 command = "npm run build"
 
-# Recreate DNS/SSL for apex + www (fixes NXDOMAIN / Google HTTP 522).
+# Canonical domain + legacy hosts (Worker 301 → wardogscheats.org apex).
+[[routes]]
+pattern = "wardogscheats.org"
+custom_domain = true
+
+[[routes]]
+pattern = "www.wardogscheats.org"
+custom_domain = true
+
 [[routes]]
 pattern = "wardogshacks.net"
 custom_domain = true
