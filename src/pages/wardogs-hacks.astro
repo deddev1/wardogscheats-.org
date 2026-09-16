@@ -2,12 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { GameProductPage } from '../views/GameProductPage'
 import { SEO, SITE_URL } from '../data/site'
-import { productDetailJsonLd } from '../lib/seo'
+import { productDetailJsonLd, productJsonLdDocument } from '../lib/seo'
 import { getGame } from '../data/games'
 
 const game = getGame('wardogs')
+const productJsonLd = productJsonLdDocument(productDetailJsonLd(game?.status ?? 'Updating'))
 const jsonLdExtra = [
-  productDetailJsonLd(game?.status ?? 'Updating'),
   {
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -23,7 +23,7 @@ const jsonLdExtra = [
 ]
 ---
 
-<BaseLayout seo={SEO.product} jsonLdExtra={jsonLdExtra}>
+<BaseLayout seo={SEO.product} jsonLdExtra={jsonLdExtra} productJsonLd={productJsonLd}>
   <GameProductPage client:idle guideSlug="wardogs-hacks" />
 </BaseLayout>
 

@@ -90,17 +90,24 @@ const importantPages = [
 if (!home.includes('<title>Wardogs Cheats | ESP, Aimbot &amp; Radar for PC</title>')) {
   fail('Homepage does not own the exact transactional title')
 }
-if (!home.includes('"@type":"Offer"') || !home.includes('"price":29.99')) {
-  fail('Homepage Product schema must include an Offer with numeric price 29.99')
+if (home.includes('"@type":"Product"')) {
+  fail('Homepage must not emit Product schema (single-product pages only)')
 }
-if (!home.includes('"@type":"AggregateRating"') || !home.includes('"bestRating":5')) {
-  fail('Homepage Product schema must include aggregateRating with bestRating/worstRating')
+const productId = `${site}/wardogs-hacks#product`
+if (!product.includes('"@type":"Offer"') || !product.includes('"price":29.99')) {
+  fail('Product page schema must include an Offer with numeric price 29.99')
 }
-if (home.includes('"price":"29.99"')) {
+if (!product.includes('"@type":"AggregateRating"') || !product.includes('"bestRating":5')) {
+  fail('Product page schema must include aggregateRating with bestRating/worstRating')
+}
+if (product.includes('"price":"29.99"')) {
   fail('Product Offer price must be a JSON number, not a string')
 }
-if (home.includes('itemReviewed')) {
-  fail('Homepage must not emit dangling itemReviewed Product references')
+if (!product.includes(`"@id":"${productId}"`)) {
+  fail('Product page must use canonical /wardogs-hacks#product id')
+}
+if ((product.match(/application\/ld\+json/g) || []).length < 2) {
+  fail('Product page must emit site graph and standalone Product JSON-LD')
 }
 if (product.includes('<title>Buy Wardogs Cheats')) fail('Product details page competes with homepage')
 if ((faq.match(/"@type":"FAQPage"/g) || []).length !== 1) fail('/faq must own one FAQPage')
@@ -113,12 +120,14 @@ for (const [name, html] of [
   if (html.includes('"@type":"FAQPage"')) fail(`${name}: duplicate FAQPage schema`)
 }
 for (const [name, html] of [
-  ['home', home],
   ['product', product],
   ['reviews', reviews],
 ]) {
-  if (!html.includes(`"@id":"${site}/#product"`)) {
-    fail(`${name}: missing shared Product ID`)
+  if (!html.includes(`"@id":"${productId}"`)) {
+    fail(`${name}: missing canonical Product ID ${productId}`)
+  }
+  if ((html.match(/application\/ld\+json/g) || []).length < 2) {
+    fail(`${name}: must emit site graph and standalone Product JSON-LD`)
   }
 }
 if ((reviews.match(/"@type":"Review"/g) || []).length !== 12) {
@@ -127,8 +136,16 @@ if ((reviews.match(/"@type":"Review"/g) || []).length !== 12) {
 if (!reviews.includes('"reviewCount":12') || !reviews.includes('"ratingValue":4.6')) {
   fail('Reviews AggregateRating must report 12 reviews averaging 4.6')
 }
-if (reviews.includes('itemReviewed')) {
-  fail('Reviews page must not emit dangling itemReviewed Product references')
+if (!reviews.includes('"itemReviewed"')) {
+  fail('Reviews page must link each Review to the canonical Product')
+}
+for (const file of files) {
+  const page = relative(dist, file).replaceAll('\\', '/')
+  if (page === '404.html') continue
+  const html = readFileSync(file, 'utf8')
+  if (!html.includes('"@type":"Product"')) continue
+  if (page === 'wardogs-hacks/index.html' || page === 'reviews/index.html') continue
+  fail(`${page}: Product schema is only allowed on /wardogs-hacks and /reviews`)
 }
 if (support.includes('noindex')) fail('Support page must be indexable')
 for (const file of files) {

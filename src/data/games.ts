@@ -9,7 +9,7 @@ export type Game = {
 
 /** Site is Wardogs Cheats only — no other titles in the catalog. */
 export const GAMES: Game[] = [
-  { slug: 'wardogs', name: 'WARDOGS', status: 'Updating', popular: true },
+  { slug: 'wardogs', name: 'WARDOGS', status: 'Undetected', popular: true },
 ]
 
 export function getGame(slug: string) {

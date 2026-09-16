@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { ReviewsPage } from '../views/ReviewsPage'
 import { SEO, SITE_URL } from '../data/site'
-import { productReviewsJsonLd } from '../lib/seo'
+import { productReviewsJsonLd, productJsonLdDocument } from '../lib/seo'
 
+const productJsonLd = productJsonLdDocument(productReviewsJsonLd())
 const jsonLdExtra = [
-  productReviewsJsonLd(),
   {
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -16,7 +16,7 @@ const jsonLdExtra = [
 ]
 ---
 
-<BaseLayout seo={SEO.reviews} jsonLdExtra={jsonLdExtra}>
+<BaseLayout seo={SEO.reviews} jsonLdExtra={jsonLdExtra} productJsonLd={productJsonLd}>
   <ReviewsPage client:visible />
 </BaseLayout>
 

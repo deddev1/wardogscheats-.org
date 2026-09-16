@@ -11,10 +11,12 @@ import { buildPageJsonLd } from '../lib/seo'
 type Props = {
   seo: PageSeo
   jsonLdExtra?: unknown[]
+  /** Product rich-result JSON-LD — only on /wardogs-hacks and /reviews. */
+  productJsonLd?: Record<string, unknown> | null
   bodyClass?: string
 }
 
-const { seo, jsonLdExtra = [], bodyClass = 'bg-z-bg text-z-ink' } = Astro.props
+const { seo, jsonLdExtra = [], productJsonLd = null, bodyClass = 'bg-z-bg text-z-ink' } = Astro.props
 const url = absoluteUrl(seo.path)
 const image = seo.image || OG_IMAGE
 const imageUrl = image.startsWith('http') ? image : absoluteUrl(image)
@@ -83,6 +85,9 @@ const isHome = seo.path === '/' || seo.path === ''
     <meta name="twitter:image:alt" content={seo.title} />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {productJsonLd ? (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
+    ) : null}
   </head>
   <body class={bodyClass}>
     <a

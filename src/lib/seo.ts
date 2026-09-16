@@ -14,7 +14,9 @@ import { getReviewsAggregate, REVIEWS } from '../data/reviews'
 import { getGame, type GameStatus } from '../data/games'
 import { PAGE_MEDIA } from '../data/media'
 
-export const PRODUCT_ID = `${SITE_URL}/#product`
+/** Canonical Product entity — only emitted on /wardogs-hacks and /reviews. */
+export const PRODUCT_ID = `${absoluteUrl('/wardogs-hacks')}#product`
+export const PRODUCT_URL = absoluteUrl('/wardogs-hacks')
 
 function absoluteAsset(src: string) {
   return src.startsWith('http') ? src : `${SITE_URL}${src.startsWith('/') ? src : `/${src}`}`
@@ -88,6 +90,9 @@ export function webPageNode(seo: PageSeo) {
       caption: seo.title,
     }
   }
+  if (seo.path === '/wardogs-hacks' || seo.path === '/reviews') {
+    page.mainEntity = { '@id': PRODUCT_ID }
+  }
   return page
 }
 
@@ -100,7 +105,7 @@ function productOffer(status: GameStatus = defaultGameStatus()) {
     status === 'Undetected' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
   return {
     '@type': 'Offer',
-    url: `${SITE_URL}/wardogs-hacks`,
+    url: PRODUCT_URL,
     availability,
     price: Number.parseFloat(PRODUCT_PRICE_USD),
     priceCurrency: 'USD',
@@ -131,14 +136,22 @@ export function productCoreJsonLd() {
     '@id': PRODUCT_ID,
     name: SITE_NAME,
     description: SITE_PURPOSE,
-    url: `${SITE_URL}/`,
-    image: absoluteAsset(PAGE_MEDIA.home.image),
+    url: PRODUCT_URL,
+    image: absoluteAsset(PAGE_MEDIA.product.image),
     sku: 'wardogs-cheats',
     brand: { '@type': 'Brand', name: SITE_NAME },
     manufacturer: { '@id': `${SITE_URL}/#organization` },
     category: 'WARDOGS software',
     offers: productOffer(),
     aggregateRating: productAggregateRating(),
+  }
+}
+
+/** Standalone Product document (separate from @graph) — Google Product rich results. */
+export function productJsonLdDocument(product: ReturnType<typeof productCoreJsonLd>) {
+  return {
+    '@context': 'https://schema.org',
+    ...product,
   }
 }
 
@@ -167,6 +180,7 @@ export function productReviewsJsonLd() {
     ...productCoreJsonLd(),
     review: REVIEWS.map((review) => ({
       '@type': 'Review',
+      itemReviewed: { '@id': PRODUCT_ID },
       author: { '@type': 'Person', name: review.author },
       datePublished: review.datePublished,
       reviewBody: review.body,
