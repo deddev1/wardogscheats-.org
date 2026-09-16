@@ -1,0 +1,54 @@
+# Cloudflare Workers/Pages redirects (static files always win over these rules).
+# Host www/HTTP → HTTPS apex is handled by workers/site.js (not_found_handling serves 404.html).
+
+# Trailing-slash canonicalization
+/wardogs-hacks/   /wardogs-hacks   301
+/forums/        /forums        301
+/reviews/       /reviews       301
+/faq/           /faq           301
+/support/       /support       301
+/privacy/       /privacy       301
+/terms/         /terms         301
+/refunds/       /refunds       301
+/refund/        /refunds       301
+/refund-policy  /refunds       301
+/refund-policy/ /refunds       301
+/privacy-policy /privacy       301
+/privacy-policy/ /privacy      301
+/terms-of-use   /terms         301
+/terms-of-use/  /terms         301
+/terms-of-service /terms       301
+/terms-of-service/ /terms      301
+
+# Transactional keyword variants consolidate on the homepage
+/thewardogs-hacks   /   301
+/thewardogs-hacks/  /   301
+/the-wardogs-hacks  /   301
+/the-wardogs-hacks/ /   301
+/buy-wardogs-hacks  /   301
+/buy-wardogs-hacks/ /   301
+
+# Legacy slugs → forums
+/articles       /forums        301
+/articles/      /forums        301
+/articles/*     /forums        301
+/blog/instructions       /forums/complete-setup#quick-checklist  301
+/blog/how-to-load        /forums/complete-setup#load-order       301
+/forums/instructions     /forums/complete-setup#quick-checklist  301
+/forums/instructions/    /forums/complete-setup#quick-checklist  301
+/forums/how-to-load      /forums/complete-setup#load-order       301
+/forums/how-to-load/     /forums/complete-setup#load-order       301
+/blog/:slug/    /forums/:slug  301
+/blog/:slug     /forums/:slug  301
+/forums/:slug/  /forums/:slug  301
+
+# Legacy / alternate sitemap URLs → single canonical sitemap
+/sitemap-pages.xml     /sitemap.xml  301
+/sitemap-products.xml  /sitemap.xml  301
+/sitemap-forums.xml    /sitemap.xml  301
+/sitemap-images.xml    /sitemap.xml  301
+/sitemap-blogs.xml     /sitemap.xml  301
+/sitemap-regions.xml   /sitemap.xml  301
+/sitemap-index.xml     /sitemap.xml  301
+/sitemap_index.xml     /sitemap.xml  301
+/sitemap.xml/          /sitemap.xml  301

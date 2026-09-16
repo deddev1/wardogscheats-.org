@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { ForumsPage } from '../views/ForumsPage'
+import { SEO } from '../data/site'
+
+const initialQuery = Astro.url.searchParams.get('q') ?? ''
+---
+
+<BaseLayout seo={SEO.forums}>
+  <ForumsPage client:idle initialQuery={initialQuery} />
+</BaseLayout>

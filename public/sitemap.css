@@ -1,0 +1,211 @@
+@namespace sitemap url("http://www.sitemaps.org/schemas/sitemap/0.9");
+@namespace xhtml url("http://www.w3.org/1999/xhtml");
+@namespace image url("http://www.google.com/schemas/sitemap-image/1.1");
+
+:root {
+  color-scheme: dark;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: #0d1117;
+  color: #e6edf3;
+  font-size: 14px;
+  line-height: 1.45;
+  scrollbar-color: #484f58 #0d1117;
+}
+
+*::selection {
+  background: #264f78;
+  color: #ffffff;
+}
+
+sitemap|urlset {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+  min-width: max-content;
+  padding: 24px 28px;
+  white-space: pre;
+  font-size: 0;
+  line-height: 0;
+}
+
+sitemap|urlset::before {
+  content: '<!-- XML Sitemap View -->\A<?xml version="1.0" encoding="UTF-8"?>\A<?xml-stylesheet type="text/css" href="/sitemap.css"?>\A<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\A        xmlns:xhtml="http://www.w3.org/1999/xhtml"\A        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">';
+  display: block;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #79c0ff;
+}
+
+sitemap|urlset::after {
+  content: "</urlset>";
+  display: block;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #79c0ff;
+}
+
+sitemap|url {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  margin-left: 16px;
+  font-size: 0;
+  line-height: 0;
+}
+
+sitemap|url::before {
+  content: "<url>";
+  display: block;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #79c0ff;
+}
+
+sitemap|url::after {
+  content: "</url>";
+  display: block;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #79c0ff;
+}
+
+sitemap|loc,
+sitemap|lastmod,
+sitemap|changefreq,
+sitemap|priority,
+xhtml|link {
+  display: block;
+  margin-left: 16px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+sitemap|loc::before {
+  content: "<loc>";
+  color: #79c0ff;
+}
+
+sitemap|loc::after {
+  content: "</loc>";
+  color: #79c0ff;
+}
+
+sitemap|loc {
+  color: #a5d6ff;
+}
+
+sitemap|lastmod::before {
+  content: "<lastmod>";
+  color: #79c0ff;
+}
+
+sitemap|lastmod::after {
+  content: "</lastmod>";
+  color: #79c0ff;
+}
+
+sitemap|lastmod {
+  color: #ffa657;
+}
+
+sitemap|changefreq::before {
+  content: "<changefreq>";
+  color: #79c0ff;
+}
+
+sitemap|changefreq::after {
+  content: "</changefreq>";
+  color: #79c0ff;
+}
+
+sitemap|changefreq {
+  color: #d2a8ff;
+}
+
+sitemap|priority::before {
+  content: "<priority>";
+  color: #79c0ff;
+}
+
+sitemap|priority::after {
+  content: "</priority>";
+  color: #79c0ff;
+}
+
+sitemap|priority {
+  color: #7ee787;
+}
+
+xhtml|link::before {
+  content: '<xhtml:link rel="alternate" hreflang="' attr(hreflang) '" href="' attr(href) '" />';
+  color: #a5d6ff;
+}
+
+image|image {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  margin-left: 16px;
+  font-size: 0;
+  line-height: 0;
+}
+
+image|image::before {
+  content: "<image:image>";
+  display: block;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #79c0ff;
+}
+
+image|image::after {
+  content: "</image:image>";
+  display: block;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #79c0ff;
+}
+
+image|loc,
+image|title,
+image|caption {
+  display: block;
+  margin-left: 16px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+image|loc::before {
+  content: "<image:loc>";
+  color: #79c0ff;
+}
+
+image|loc::after {
+  content: "</image:loc>";
+  color: #79c0ff;
+}
+
+image|loc {
+  color: #a5d6ff;
+}
+
+image|title::before {
+  content: "<image:title>";
+  color: #79c0ff;
+}
+
+image|title::after {
+  content: "</image:title>";
+  color: #79c0ff;
+}
+
+image|caption::before {
+  content: "<image:caption>";
+  color: #79c0ff;
+}
+
+image|caption::after {
+  content: "</image:caption>";
+  color: #79c0ff;
+}

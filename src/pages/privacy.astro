@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { PolicyPage } from '../views/PolicyPage'
+import { SITE_URL } from '../data/site'
+import { getPolicyPage } from '../data/policies'
+import { PAGE_IMAGES } from '../data/images'
+
+const page = getPolicyPage('privacy')!
+const seo = {
+  title: page.title,
+  description: page.description,
+  path: page.path,
+  ogType: 'website' as const,
+  image: PAGE_IMAGES.support.src,
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+}
+
+const jsonLdExtra = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Privacy', item: `${SITE_URL}/privacy` },
+    ],
+  },
+]
+---
+
+<BaseLayout seo={seo} jsonLdExtra={jsonLdExtra}>
+  <PolicyPage client:visible page={page} />
+</BaseLayout>

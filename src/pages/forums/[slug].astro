@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { BlogPostPage } from '../../views/BlogPostPage'
+import { BLOGS, blogPath, getBlog } from '../../data/blogs'
+import { SITE_URL, type PageSeo } from '../../data/site'
+import { getForumMedia } from '../../data/media'
+
+export function getStaticPaths() {
+  return BLOGS.map((post) => ({
+    params: { slug: post.slug },
+  }))
+}
+
+const { slug } = Astro.params
+const post = getBlog(slug!)
+
+if (!post) {
+  return Astro.redirect('/404')
+}
+
+const media = getForumMedia(post.slug)
+const absoluteMedia = (path: string) => `${SITE_URL}${path}`
+
+const seo: PageSeo = {
+  title: post.metaTitle,
+  description: post.metaDescription,
+  path: blogPath(post.slug),
+  ogType: 'article',
+  image: media.image,
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+}
+
+const jsonLdExtra = [
+  {
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.metaDescription,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { '@id': `${SITE_URL}/#organization` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    mainEntityOfPage: `${SITE_URL}${blogPath(post.slug)}`,
+    image: {
+      '@type': 'ImageObject',
+      url: absoluteMedia(media.image),
+      width: 800,
+      height: 450,
+      name: media.title,
+      caption: media.caption,
+    },
+    inLanguage: 'en',
+    articleSection: post.tag,
+  },
+  ...(media.video
+    ? [
+        {
+          '@type': 'VideoObject',
+          name: media.videoTitle || media.title,
+          description: media.videoDescription || media.caption,
+          thumbnailUrl: absoluteMedia(media.image),
+          contentUrl: absoluteMedia(media.video),
+          uploadDate: post.date,
+          isFamilyFriendly: false,
+        },
+      ]
+    : []),
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Forums', item: `${SITE_URL}/forums` },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: `${SITE_URL}${blogPath(post.slug)}`,
+      },
+    ],
+  },
+]
+---
+
+<BaseLayout seo={seo} jsonLdExtra={jsonLdExtra}>
+  <BlogPostPage client:visible slug={post.slug} />
+</BaseLayout>

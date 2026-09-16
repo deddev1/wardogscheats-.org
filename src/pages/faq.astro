@@ -1,0 +1,24 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { FaqPage } from '../views/FaqPage'
+import { SEO, SITE_URL } from '../data/site'
+import { SITE_FAQS } from '../data/faqs'
+import { faqPageJsonLd } from '../lib/seo'
+
+const jsonLdExtra = [
+  faqPageJsonLd(SITE_FAQS, `${SITE_URL}/faq`),
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${SITE_URL}/faq` },
+    ],
+  },
+]
+---
+
+<BaseLayout seo={SEO.faq} jsonLdExtra={jsonLdExtra}>
+  <FaqPage client:visible />
+</BaseLayout>
+
+
