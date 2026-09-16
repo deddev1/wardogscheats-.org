@@ -1,6 +1,6 @@
 # Cloudflare Workers + static assets — required so CI `npx wrangler deploy` succeeds.
-# (Dashboard is locked to that command; `wrangler pages deploy` is not used.)
-name = "thewardogsqrhe"
+# Worker name must match the connected Workers Builds project (wardogscheats--org).
+name = "wardogscheats--org"
 main = "workers/site.js"
 compatibility_date = "2026-09-12"
 
@@ -9,7 +9,7 @@ compatibility_date = "2026-09-12"
 [build]
 command = "npm run build"
 
-# Canonical domain + legacy hosts (Worker 301 → wardogscheats.org apex).
+# Custom domains — only zones on this Cloudflare account (wardogscheats.org).
 [[routes]]
 pattern = "wardogscheats.org"
 custom_domain = true
@@ -18,13 +18,8 @@ custom_domain = true
 pattern = "www.wardogscheats.org"
 custom_domain = true
 
-[[routes]]
-pattern = "wardogshacks.net"
-custom_domain = true
-
-[[routes]]
-pattern = "www.wardogshacks.net"
-custom_domain = true
+# Legacy wardogshacks.net: add [[routes]] here only after that zone is on Cloudflare.
+# The Worker still 301s unknown hosts → https://wardogscheats.org when they reach this script.
 
 [assets]
 directory = "./dist"
