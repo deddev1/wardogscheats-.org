@@ -102,16 +102,30 @@ function productOffer(status: GameStatus = defaultGameStatus()) {
     '@type': 'Offer',
     url: `${SITE_URL}/wardogs-hacks`,
     availability,
-    price: PRODUCT_PRICE_USD,
+    price: Number.parseFloat(PRODUCT_PRICE_USD),
     priceCurrency: 'USD',
     priceValidUntil: '2027-12-31',
     itemCondition: 'https://schema.org/NewCondition',
-    seller: { '@id': `${SITE_URL}/#organization` },
+    seller: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+    },
+  }
+}
+
+function productAggregateRating() {
+  const aggregate = getReviewsAggregate()
+  return {
+    '@type': 'AggregateRating',
+    ratingValue: aggregate.ratingValue,
+    reviewCount: aggregate.reviewCount,
+    bestRating: aggregate.bestRating,
+    worstRating: aggregate.worstRating,
   }
 }
 
 export function productCoreJsonLd() {
-  const aggregate = getReviewsAggregate()
   return {
     '@type': 'Product',
     '@id': PRODUCT_ID,
@@ -119,17 +133,12 @@ export function productCoreJsonLd() {
     description: SITE_PURPOSE,
     url: `${SITE_URL}/`,
     image: absoluteAsset(PAGE_MEDIA.home.image),
+    sku: 'wardogs-cheats',
     brand: { '@type': 'Brand', name: SITE_NAME },
     manufacturer: { '@id': `${SITE_URL}/#organization` },
     category: 'WARDOGS software',
     offers: productOffer(),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: aggregate.ratingValue,
-      reviewCount: aggregate.reviewCount,
-      bestRating: aggregate.bestRating,
-      worstRating: aggregate.worstRating,
-    },
+    aggregateRating: productAggregateRating(),
   }
 }
 
@@ -154,16 +163,8 @@ export function productDetailJsonLd(status: GameStatus) {
 }
 
 export function productReviewsJsonLd() {
-  const aggregate = getReviewsAggregate()
   return {
     ...productCoreJsonLd(),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: aggregate.ratingValue,
-      reviewCount: aggregate.reviewCount,
-      bestRating: aggregate.bestRating,
-      worstRating: aggregate.worstRating,
-    },
     review: REVIEWS.map((review) => ({
       '@type': 'Review',
       author: { '@type': 'Person', name: review.author },
@@ -172,11 +173,10 @@ export function productReviewsJsonLd() {
       name: `${review.author} verified buyer review`,
       reviewRating: {
         '@type': 'Rating',
-        ratingValue: String(review.rating),
-        bestRating: '5',
-        worstRating: '1',
+        ratingValue: review.rating,
+        bestRating: 5,
+        worstRating: 1,
       },
-      itemReviewed: { '@id': PRODUCT_ID },
     })),
   }
 }

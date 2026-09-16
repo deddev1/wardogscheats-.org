@@ -126,8 +126,8 @@ export const REVIEWS: Review[] = [
 
 export function getReviewsAggregate() {
   const count = REVIEWS.length
-  const ratingValue = (
-    REVIEWS.reduce((sum, review) => sum + review.rating, 0) / count
-  ).toFixed(1)
-  return { ratingValue, reviewCount: count }
+  const ratingValue = Number(
+    (REVIEWS.reduce((sum, review) => sum + review.rating, 0) / count).toFixed(1),
+  )
+  return { ratingValue, reviewCount: count, bestRating: 5, worstRating: 1 }
 }

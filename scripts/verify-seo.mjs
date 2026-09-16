@@ -90,11 +90,17 @@ const importantPages = [
 if (!home.includes('<title>Wardogs Cheats | ESP, Aimbot &amp; Radar for PC</title>')) {
   fail('Homepage does not own the exact transactional title')
 }
-if (!home.includes('"@type":"Offer"') || !home.includes('"price":"29.99"')) {
-  fail('Homepage Product schema must include an Offer with price')
+if (!home.includes('"@type":"Offer"') || !home.includes('"price":29.99')) {
+  fail('Homepage Product schema must include an Offer with numeric price 29.99')
 }
-if (!home.includes('"@type":"AggregateRating"')) {
-  fail('Homepage Product schema must include aggregateRating')
+if (!home.includes('"@type":"AggregateRating"') || !home.includes('"bestRating":5')) {
+  fail('Homepage Product schema must include aggregateRating with bestRating/worstRating')
+}
+if (home.includes('"price":"29.99"')) {
+  fail('Product Offer price must be a JSON number, not a string')
+}
+if (home.includes('itemReviewed')) {
+  fail('Homepage must not emit dangling itemReviewed Product references')
 }
 if (product.includes('<title>Buy Wardogs Cheats')) fail('Product details page competes with homepage')
 if ((faq.match(/"@type":"FAQPage"/g) || []).length !== 1) fail('/faq must own one FAQPage')
@@ -118,8 +124,11 @@ for (const [name, html] of [
 if ((reviews.match(/"@type":"Review"/g) || []).length !== 12) {
   fail('Reviews schema must contain exactly 12 visible buyer reviews')
 }
-if (!reviews.includes('"reviewCount":12') || !reviews.includes('"ratingValue":"4.6"')) {
+if (!reviews.includes('"reviewCount":12') || !reviews.includes('"ratingValue":4.6')) {
   fail('Reviews AggregateRating must report 12 reviews averaging 4.6')
+}
+if (reviews.includes('itemReviewed')) {
+  fail('Reviews page must not emit dangling itemReviewed Product references')
 }
 if (support.includes('noindex')) fail('Support page must be indexable')
 for (const file of files) {
